@@ -1,11 +1,5 @@
 name: Check Action
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
 jobs:
   uv-example:
     name: python
