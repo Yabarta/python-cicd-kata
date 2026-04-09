@@ -1,6 +1,6 @@
 name: Check Actions
 
-'on':
+on:
   push:
     branches:
       - main
