@@ -1,4 +1,9 @@
-name: Check Actions
+name: Check Action
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   uv-example:
