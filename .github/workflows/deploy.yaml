@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - features/dice-plus-4
 jobs:
   push-to-registry:
     runs-on: ubuntu-latest
