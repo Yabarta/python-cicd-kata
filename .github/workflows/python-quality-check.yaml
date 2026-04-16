@@ -1,0 +1,24 @@
+name: Python Quality Check
+on:
+  workflow_call:
+    inputs:
+      check-name:
+        required: true
+        type: string
+      command:
+        required: true
+        type: string
+
+jobs:
+  run-check:
+    name: ${{ inputs.check-name }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-python-uv
+
+      - name: Run quality command
+        run: ${{ inputs.command }}
+
+      - uses: ./.github/actions/minimize-uv-cache

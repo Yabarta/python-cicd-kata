@@ -1,0 +1,30 @@
+name: 🔎 Code Safety
+run-name: Running Code Safety for ${{ github.ref }} on ${{ github.event_name }} 🔎
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  check-linter:
+    uses: ./.github/workflows/python-quality-check.yaml
+    with:
+      check-name: Check Linter
+      command: uv run ruff check .
+
+  check-formatter:
+    uses: ./.github/workflows/python-quality-check.yaml
+    with:
+      check-name: Check Formatter
+      command: uv run ruff format --check .
+
+  check-type-safety:
+    uses: ./.github/workflows/python-quality-check.yaml
+    with:
+      check-name: Check Type Safety
+      command: uv run pyright
+
+  run-unit-tests:
+    uses: ./.github/workflows/python-quality-check.yaml
+    with:
+      check-name: Run Unit Tests
+      command: uv run pytest
